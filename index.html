@@ -10,34 +10,52 @@
       rel="stylesheet"
     />
     <style>
-      :root {
-        --bg: oklch(0.12 0.008 270);
-        --surface: oklch(0.15 0.008 270);
-        --card: oklch(0.17 0.008 270);
-        --border: oklch(0.19 0.006 270);
-        --accent: oklch(0.55 0.18 280);
-        --accent2: oklch(0.6 0.14 220);
-        --accent3: oklch(0.7 0.15 80);
-        --green: oklch(0.6 0.15 155);
-        --red: oklch(0.6 0.18 25);
-        --text: oklch(0.9 0.01 270);
-        --muted: oklch(0.55 0.02 270);
-        --code-bg: oklch(0.1 0.006 270);
-        --heading: oklch(0.8 0.06 270);
-      }
+:root {
+    --bg: oklch(0.12 0.008 270);
+    --surface: oklch(0.15 0.008 270);
+    --card: oklch(0.17 0.008 270);
+    --border: oklch(0.19 0.006 270);
+    --accent: oklch(0.55 0.18 280);
+    --accent2: oklch(0.60 0.14 220);
+    --accent3: oklch(0.70 0.15 80);
+    --green: oklch(0.60 0.15 155);
+    --red: oklch(0.60 0.18 25);
+    --text: oklch(0.90 0.01 270);
+    --muted: oklch(0.55 0.02 270);
+    --code-bg: oklch(0.10 0.006 270);
+    --heading: oklch(0.80 0.06 270);
 
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: oklch(0.98 0.003 270);
-          --surface: oklch(0.96 0.003 270);
-          --card: oklch(0.95 0.003 270);
-          --border: oklch(0.88 0.005 270);
-          --text: oklch(0.15 0.02 270);
-          --muted: oklch(0.5 0.015 270);
-          --code-bg: oklch(0.95 0.003 270);
-          --heading: oklch(0.35 0.06 280);
-        }
-      }
+    /* Type scale */
+    --text-xs: 11px;
+    --text-sm: 13px;
+    --text-base: 16px;
+    --text-lg: 18px;
+    --text-xl: 24px;
+    --text-2xl: 32px;
+    --text-3xl: clamp(28px, 5vw, 48px);
+
+    /* Line heights */
+    --leading-tight: 1.15;
+    --leading-normal: 1.5;
+    --leading-relaxed: 1.65;
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: oklch(0.98 0.003 270);
+      --surface: oklch(0.96 0.003 270);
+      --card: oklch(0.95 0.003 270);
+      --border: oklch(0.88 0.005 270);
+      --text: oklch(0.15 0.02 270);
+      --muted: oklch(0.50 0.015 270);
+      --code-bg: oklch(0.95 0.003 270);
+      --heading: oklch(0.35 0.06 280);
+    }
+  }
+
+
 
       * {
         margin: 0;
@@ -67,32 +85,28 @@
   }
 
   h1 {
-        font-size: clamp(32px, 6vw, 52px);
-        font-weight: 700;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        color: var(--heading);
-        margin-bottom: 16px;
-      }
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: -0.02em;
+    color: var(--heading);
+    margin-bottom: 16px;
+  }
 
-      .subtitle {
-        color: var(--muted);
-        font-size: 15px;
-        font-weight: 400;
-        max-width: 480px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
+  .subtitle {
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: var(--leading-relaxed);
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto;
+  }
 
       /* Problem selector chips */
       .examples-label {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 12px;
-      }
+    font-size: var(--text-xs);
+    margin-bottom: 12px;
+  }
 
       .examples {
         display: flex;
@@ -198,23 +212,21 @@
       }
 
       textarea {
-        width: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: var(--text);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 13px;
-        line-height: 1.7;
-        padding: 20px;
-        resize: vertical;
-        min-height: 180px;
-        caret-color: oklch(from var(--accent) l c h);
-      }
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    padding: 20px;
+    resize: vertical;
+    min-height: 180px;
+    caret-color: oklch(from var(--accent) l c h);
+  }
 
-      textarea::placeholder {
-        color: oklch(from var(--muted) l c h / 0.5);
-      }
+  textarea::placeholder { color: oklch(from var(--muted) l c h / 0.5); }
 
       .lang-select:focus-visible {
         outline: 2px solid var(--accent);
@@ -313,18 +325,6 @@
       /* Output */
       #output {
         display: none;
-        animation: fadeUp 0.4s ease both;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(16px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
       }
 
       .section-card {
@@ -333,7 +333,18 @@
         border-radius: 14px;
         margin-bottom: 16px;
         overflow: hidden;
+        opacity: 0;
+        animation: fadeUp 0.4s var(--ease-out-quart) both;
       }
+
+      .section-card:nth-child(1) { animation-delay: 0ms; }
+      .section-card:nth-child(2) { animation-delay: 60ms; }
+      .section-card:nth-child(3) { animation-delay: 120ms; }
+      .section-card:nth-child(4) { animation-delay: 180ms; }
+      .section-card:nth-child(5) { animation-delay: 240ms; }
+      .section-card:nth-child(6) { animation-delay: 300ms; }
+      .section-card:nth-child(7) { animation-delay: 360ms; }
+      .section-card:nth-child(8) { animation-delay: 420ms; }
 
       .section-header {
         display: flex;
@@ -387,15 +398,38 @@
         transform: rotate(-90deg);
       }
       .section-card.collapsed .section-body {
-        display: none;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
       }
 
-      .section-body {
-        padding: 20px;
-        font-size: 14px;
-        line-height: 1.75;
-        color: var(--muted);
-      }
+.section-body {
+    padding: 20px;
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--muted);
+    overflow: hidden;
+    max-height: 5000px;
+    transition: max-height 0.35s var(--ease-out-quart), padding 0.35s var(--ease-out-quart);
+  }
+
+  .code-block {
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .copy-btn {
+    font-size: var(--text-xs);
+  }
+
+  .cpill-label {
+    font-size: var(--text-xs);
+  }
+
+  .cpill-value {
+    font-size: var(--text-lg);
+    font-weight: 700;
+  }
 
       /* Section color variants */
       .s-understanding .section-icon {
@@ -541,27 +575,25 @@
         width: 100%;
         border-collapse: collapse;
         font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
+        font-size: var(--text-xs);
+        line-height: var(--leading-normal);
         margin-top: 4px;
+      }
+
+      th, td {
+        border: 1px solid var(--border);
+        padding: 8px 14px;
+        text-align: left;
+        font-weight: 500;
       }
 
       th {
         background: oklch(from var(--accent) l c h / 0.08);
-        border: 1px solid var(--border);
-        padding: 8px 14px;
-        text-align: left;
         color: oklch(from var(--accent) l c h);
-        font-weight: 600;
       }
 
       td {
-        border: 1px solid var(--border);
-        padding: 8px 14px;
         color: var(--text);
-      }
-
-      tr:nth-child(even) td {
-        background: oklch(from var(--text) l c h / 0.02);
       }
 
       /* Edge cases */
@@ -581,9 +613,9 @@
         padding: 12px 14px;
       }
 
-      .edge-bullet {
+.edge-bullet {
         color: var(--red);
-        font-size: 16px;
+        font-size: var(--text-base);
         flex-shrink: 0;
       }
 
@@ -614,8 +646,9 @@
       }
       .dry-description {
         color: var(--muted);
-        margin-bottom: 16px;
         font-size: 14px;
+        line-height: var(--leading-relaxed);
+        margin-bottom: 16px;
       }
 
       /* Streaming pulse */
@@ -633,6 +666,7 @@
         padding: 16px 20px;
         color: oklch(from var(--red) l c h);
         font-size: 14px;
+        animation: fadeUp 0.3s var(--ease-out-quart) both;
       }
 
       /* Provider panel */
@@ -644,14 +678,24 @@
         flex-wrap: wrap;
       }
 
-      .provider-label {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 11px;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        flex-shrink: 0;
-      }
+/* Labels */
+  .provider-label, .examples-label, .file-label, .field-hint {
+    font-family: "JetBrains Mono", monospace;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  .field-hint {
+    font-size: var(--text-xs);
+    color: var(--muted);
+    font-weight: 400;
+    margin-left: 8px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
 
       .provider-tabs {
         display: flex;
@@ -701,12 +745,25 @@
         border-radius: 14px;
         padding: 20px;
         margin-bottom: 20px;
-        display: none;
-        animation: fadeUp 0.25s ease both;
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart), max-height 0.35s var(--ease-out-quart), padding 0.35s var(--ease-out-quart), margin 0.35s var(--ease-out-quart), border-width 0.35s var(--ease-out-quart);
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
       }
 
       .provider-config.visible {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        max-height: 600px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-width: 1px;
       }
 
       .config-grid {
@@ -849,6 +906,23 @@
         border-radius: 100px;
       }
 
+      .copy-btn.copied {
+        background: oklch(from var(--green) l c h / 0.15);
+        border-color: var(--green);
+        color: var(--green);
+        transform: scale(1.05);
+      }
+
+      .input-section.populated {
+        border-color: var(--green);
+        box-shadow: 0 0 0 3px oklch(from var(--green) l c h / 0.12);
+      }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       /* Responsive */
       @media (max-width: 600px) {
         .controls {
@@ -872,6 +946,14 @@
           align-items: center;
         }
       }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
     </style>
   </head>
   <body>
@@ -1266,6 +1348,10 @@ Constraints: 1 <= capacity <= 3000, 0 <= key <= 10^4`,
         chip.innerHTML = `${ex.name} <span class="diff-badge ${ex.diff}">${ex.diff}</span>`;
         chip.onclick = () => {
           document.getElementById("problem").value = ex.problem;
+          document.querySelector(".input-section").classList.add("populated");
+          setTimeout(() => {
+            document.querySelector(".input-section").classList.remove("populated");
+          }, 600);
         };
         examplesEl.appendChild(chip);
       });
@@ -1395,13 +1481,13 @@ The dry run table headers should match key variable names. Include 3-6 rows.`;
 
       function copyCode(btn, code) {
         navigator.clipboard.writeText(code).then(() => {
+          btn.classList.add("copied");
           btn.textContent = "✓ Copied!";
-          setTimeout(() => (btn.textContent = "Copy"), 2000);
+          setTimeout(() => {
+            btn.classList.remove("copied");
+            btn.textContent = "Copy";
+          }, 2000);
         });
-      }
-
-      function toggleSection(card) {
-        card.classList.toggle("collapsed");
       }
 
       function renderOutput(d, lang) {
@@ -1548,9 +1634,32 @@ The dry run table headers should match key variable names. Include 3-6 rows.`;
 
       function toggleSection(btn) {
         const card = btn.closest(".section-card");
+        const body = card.querySelector(".section-body");
         const expanded = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", !expanded);
-        card.classList.toggle("collapsed", !expanded);
+
+        if (expanded) {
+          const height = body.scrollHeight;
+          body.style.maxHeight = height + "px";
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              btn.setAttribute("aria-expanded", "false");
+              card.classList.add("collapsed");
+              body.style.maxHeight = "0";
+            });
+          });
+        } else {
+          body.style.maxHeight = "0px";
+          btn.setAttribute("aria-expanded", "true");
+          card.classList.remove("collapsed");
+          requestAnimationFrame(() => {
+            body.style.maxHeight = body.scrollHeight + "px";
+          });
+          const handler = () => {
+            body.style.maxHeight = "";
+            body.removeEventListener("transitionend", handler);
+          };
+          body.addEventListener("transitionend", handler);
+        }
       }
 
       function escHtml(str) {
