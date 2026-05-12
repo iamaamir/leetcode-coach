@@ -52,41 +52,6 @@
         min-height: 100vh;
       }
 
-      .glow-orb {
-        position: fixed;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 0;
-      }
-      .glow-orb.one {
-        width: 300px;
-        height: 300px;
-        background: oklch(from var(--accent) l c h / 0.08);
-      }
-      .glow-orb.two {
-        width: 250px;
-        height: 250px;
-        background: oklch(from var(--accent2) l c h / 0.06);
-      }
-
-      @media (prefers-reduced-motion: no-preference) {
-        .glow-orb {
-          animation: drift 12s ease-in-out infinite;
-        }
-        .glow-orb.two {
-          animation-delay: -6s;
-        }
-        @keyframes drift {
-          0%,
-          100% {
-            transform: translate(0, 0);
-          }
-          50% {
-            transform: translate(20px, 15px);
-          }
-        }
-      }
-
       .container {
         position: relative;
         z-index: 1;
@@ -884,16 +849,6 @@
         border-radius: 100px;
       }
 
-      .glow-orb {
-        display: none;
-      }
-
-      @media (prefers-reduced-motion: no-preference) {
-        .glow-orb {
-          display: block;
-        }
-      }
-
       /* Responsive */
       @media (max-width: 600px) {
         .controls {
@@ -920,9 +875,6 @@
     </style>
   </head>
   <body>
-    <div class="glow-orb one"></div>
-    <div class="glow-orb two"></div>
-
 <div class="container">
   <header>
     <h1>LeetCode Coach</h1>
