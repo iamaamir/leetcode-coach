@@ -1,4 +1,8 @@
 
-Paste any problem. Get breakdown, approach, annotated code, dry run, complexity, and edge cases.<img width="740" height="705" alt="image" src="https://github.com/user-attachments/assets/a3ebb406-a68a-44c4-afbe-415219ed6a3e" />
+<img width="1480" height="2070" alt="" src="https://github.com/user-attachments/assets/6a951c88-fd25-4e1f-99f1-6ec4004c2e7c" />
+
+<img width="1480" height="2070" alt="" src="https://github.com/user-attachments/assets/611c4c67-4b02-4703-bcc2-59dca1107adf" />
+
+
 
 play live [here](https://negative-brown-vo6ebrvkjj.edgeone.app/)
