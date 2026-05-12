@@ -67,6 +67,9 @@
         color: var(--text);
         font-family: "Syne", sans-serif;
         min-height: 100vh;
+        background-size: 200% 200%;
+        animation: gradient 24s ease infinite;
+        animation-delay: 3s;
       }
 
       .container {
@@ -357,6 +360,17 @@
         font-size: 18px;
       }
 
+      @keyframes gradient {
+        0% {
+          background-position: 2% 0%;
+        }
+        50% {
+          background-position: 99% 100%;
+        }
+        100% {
+          background-position: 2% 0%;
+        }
+      }
       /* Streaming spinner */
       @keyframes spin {
         to {
