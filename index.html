@@ -1532,6 +1532,7 @@ Constraints: 2 ≤ nums.length ≤ 10⁴, each input has exactly one solution."
         const output = document.getElementById("output");
         output.style.display = "none";
         output.innerHTML = "";
+        resetTitle();
       }
 
       async function testConnection(provider) {
@@ -1705,6 +1706,38 @@ Constraints: 1 <= capacity <= 3000, 0 <= key <= 10^4`,
         examplesEl.appendChild(chip);
       });
 
+      // ── Animated title (visible when user is on another tab) ──────────
+      const ORIGINAL_TITLE = document.title;
+      document.title = ORIGINAL_TITLE;
+      let titleInterval = null;
+
+      function startAnalyzingTitle() {
+        const frames = ["|", "/", "-", "\\"];
+        let i = 0;
+        titleInterval = setInterval(() => {
+          document.title = "LeetCode Coach — Analyzing " + frames[i++ % frames.length];
+        }, 120);
+      }
+
+      function stopAnalyzingTitle(isError) {
+        if (titleInterval) {
+          clearInterval(titleInterval);
+          titleInterval = null;
+        }
+        document.title = isError ? "LeetCode Coach — err" : "LeetCode Coach — done";
+        setTimeout(() => {
+          document.title = ORIGINAL_TITLE;
+        }, 3000);
+      }
+
+      function resetTitle() {
+        if (titleInterval) {
+          clearInterval(titleInterval);
+          titleInterval = null;
+        }
+        document.title = ORIGINAL_TITLE;
+      }
+
       async function solve() {
         const problem = document.getElementById("problem").value.trim();
         const lang = document.getElementById("lang").value;
@@ -1730,6 +1763,7 @@ Constraints: 1 <= capacity <= 3000, 0 <= key <= 10^4`,
         btnText.textContent = "Analyzing…";
         btn.querySelector(".btn-icon").innerHTML = '<div class="spinner"></div>';
         document.getElementById("cancelBtn").style.display = "inline-flex";
+        startAnalyzingTitle();
 
         if (abortController) abortController.abort();
         abortController = new AbortController();
@@ -1827,8 +1861,10 @@ The dry run table headers should match key variable names. Include 3-6 rows.`;
           const parsed = JSON.parse(jsonMatch[0]);
 
           renderOutput(parsed, lang);
+          stopAnalyzingTitle(false);
         } catch (err) {
           if (err.name === "AbortError") {
+            resetTitle();
             output.style.display = "none";
             output.innerHTML = "";
             return;
@@ -1839,6 +1875,7 @@ The dry run table headers should match key variable names. Include 3-6 rows.`;
             ? `<br><span style="color:var(--muted);font-size:var(--text-xs)">Tip: Make sure your local server is running and CORS is allowed. Use the "Test Connection" button above.</span>`
             : "";
           output.innerHTML = `<div class="error-box">⚠️ ${escHtml(err.message || "Something went wrong.")}${hint}</div>`;
+          stopAnalyzingTitle(true);
         } finally {
           abortController = null;
           document.getElementById("cancelBtn").style.display = "none";
