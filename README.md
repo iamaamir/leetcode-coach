@@ -2,4 +2,4 @@
 
 
 
-play live [here](https://negative-brown-vo6ebrvkjj.edgeone.app/)
+play live [here](https://iamaamir.github.io/leetcode-coach/)
